@@ -60,6 +60,7 @@ local function attack(attacker, defender, triangle_bonus)
     if do_hit(attacker, defender, triangle_bonus) then
         local critical_bonus = calculate_critical_bonus(attacker, defender)
         local damage = calculate_damage(attacker, defender, critical_bonus)
+        defender.hp = defender.hp - damage
     end
 end
 
@@ -67,6 +68,12 @@ local function init_fight(attacker, defender, triangle_bonus)
     set_atkspd(attacker)
     set_atkspd(defender)
     attack(attacker, defender, triangle_bonus)
+    attack(defender, attacker, triangle_bonus)
+
+    if attacker.atkspd - defender.atkspd >= 4 then
+        attack(attacker, defender, triangle_bonus)
+    elseif defender.atkspd - attacker.atkspd >= 4 then
+        attack(defender, attacker, triangle_bonus)
 end
 
 function SIMULATOR.run(scenario_input)
