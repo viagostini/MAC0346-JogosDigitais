@@ -22,7 +22,7 @@ local function set_output(input, units)
     return output
 end
 
-local function do_hit(attacker, defender, triangle_bonus)
+local function do_hit(attacker, defender)
     local acc = attacker.weapon.hit + 2 * attacker.skl + attacker.lck +
         10 * triangle_bonus[attacker.weapon.kind][defender.weapon.kind]
     local avo = 2 * defender.atkspd + defender.lck
@@ -73,14 +73,14 @@ local function calculate_damage(attacker, defender, critical_bonus)
     return damage
 end
 
-local function attack(attacker, defender, triangle_bonus)
+local function attack(attacker, defender)
     print("\t" .. attacker.name .. " attacking " .. defender.name)
 
     if attacker.HP == 0 then
         return
     end
 
-    if do_hit(attacker, defender, triangle_bonus) then
+    if do_hit(attacker, defender) then
         local critical_bonus = calculate_critical_bonus(attacker, defender)
         local damage = calculate_damage(attacker, defender, critical_bonus)
         print("\t\tDamage dealt: " .. damage)
@@ -90,17 +90,17 @@ local function attack(attacker, defender, triangle_bonus)
     end
 end
 
-local function init_fight(fight_nb, attacker, defender, triangle_bonus)
+local function init_fight(fight_nb, attacker, defender)
     print("Luta " .. fight_nb .. ": " .. attacker.name .. " vs " ..
           defender.name)
 
-    attack(attacker, defender, triangle_bonus)
-    attack(defender, attacker, triangle_bonus)
+    attack(attacker, defender)
+    attack(defender, attacker)
 
     if attacker.atkspd - defender.atkspd >= 4 then
-        attack(attacker, defender, triangle_bonus)
+        attack(attacker, defender)
     elseif defender.atkspd - attacker.atkspd >= 4 then
-        attack(defender, attacker, triangle_bonus)
+        attack(defender, attacker)
     end
 end
 
@@ -110,7 +110,7 @@ function SIMULATOR.run(scenario_input)
 
     for fight_nb, fight in ipairs(scenario_input.fights) do
         local attacker, defender = get_fighters(fight, units)
-        init_fight(fight_nb, attacker, defender, triangle_bonus)
+        init_fight(fight_nb, attacker, defender)
     end
 
     scenario_output = set_output(scenario_input, units)
