@@ -22,3 +22,5 @@ function Unit:_init(name, attr_tbl, weapon_attr_tbl)
     self.trait = attr_tbl.trait
     self.weapon = Weapon(attr_tbl.weapon, weapon_attr_tbl)
 end
+
+return Unit

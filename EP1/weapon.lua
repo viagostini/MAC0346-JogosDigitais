@@ -18,3 +18,5 @@ function Weapon:_init(name, attr_tbl)
     self.kind = attr_tbl.kind
     self.eff = attr_tbl.eff
 end
+
+return Weapon
