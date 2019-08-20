@@ -16,7 +16,7 @@ local function set_output(input, units)
     local output = input
 
     for k, v in pairs(output.units) do
-        output.units[k].HP = units[k].HP
+        output.units[k].hp = units[k].hp
     end
 
     return output
@@ -53,8 +53,8 @@ local function calculate_damage(attacker, defender, critical_bonus)
     local attacker_attr = 0
     local defender_attr = 0
     
-    if attacker.eff ~= nil and defender.trait ~= nil and
-       attacker.eff == defender.trait then
+    if attacker.weapon.eff ~= nil and defender.trait ~= nil and
+       attacker.weapon.eff == defender.trait then
         eff_bonus = 2
     end
 
@@ -76,7 +76,7 @@ end
 local function attack(attacker, defender)
     print("\t" .. attacker.name .. " attacking " .. defender.name)
 
-    if attacker.HP == 0 then
+    if attacker.hp == 0 then
         return
     end
 
@@ -84,7 +84,7 @@ local function attack(attacker, defender)
         local critical_bonus = calculate_critical_bonus(attacker, defender)
         local damage = calculate_damage(attacker, defender, critical_bonus)
         print("\t\tDamage dealt: " .. damage)
-        defender.HP = math.max(0, defender.HP - damage)
+        defender.hp = math.max(0, defender.hp - damage)
     else
         print("\t\tAttack missed")
     end

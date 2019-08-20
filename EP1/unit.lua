@@ -13,7 +13,7 @@ setmetatable(Unit, {
 
 function Unit:_init(name, attr_tbl, weapon_attr_tbl)
     self.name = name
-    self.HP = attr_tbl.hp
+    self.hp = attr_tbl.hp
     self.str = attr_tbl.str
     self.mag = attr_tbl.mag
     self.skl = attr_tbl.skl
