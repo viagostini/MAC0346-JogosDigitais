@@ -9,6 +9,9 @@ setmetatable(Weapon, {
     end,
 })
 
+local physical = {sword = true, axe = true, lance = true, bow = true}
+local magical = {wind = true, thunder = true, fire = true}
+
 function Weapon:_init(name, attr_tbl)
     self.name = name
     self.mt = attr_tbl.mt

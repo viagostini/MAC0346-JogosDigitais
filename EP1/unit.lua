@@ -1,6 +1,8 @@
 local Unit = {}
 Unit.__index = Unit
 
+Weapon = require "weapon"
+
 setmetatable(Unit, {
     __call = function(cls, ...)
         local self = setmetatable({}, cls)
@@ -21,6 +23,7 @@ function Unit:_init(name, attr_tbl, weapon_attr_tbl)
     self.res = attr_tbl.res
     self.trait = attr_tbl.trait
     self.weapon = Weapon(attr_tbl.weapon, weapon_attr_tbl)
+    self.atkspd = self.spd - math.max(0, self.weapon.wt - self.str)
 end
 
 return Unit
