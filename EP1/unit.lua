@@ -1,7 +1,7 @@
 local Unit = {}
 Unit.__index = Unit
 
-Weapon = require "weapon"
+local Weapon = require "weapon"
 
 setmetatable(Unit, {
     __call = function(cls, ...)

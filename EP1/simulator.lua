@@ -1,8 +1,6 @@
 local SIMULATOR = {}
 
 local DataLoader = require "data_loader"
-local Weapon = require "weapon"
-local Unit = require "unit"
 
 local triangle_bonus = DataLoader.load_file("triangle_bonus.lua")
 
@@ -15,7 +13,7 @@ end
 local function set_output(input, units)
     local output = input
 
-    for k, v in pairs(output.units) do
+    for k in pairs(output.units) do
         output.units[k].hp = units[k].hp
     end
 
@@ -52,7 +50,7 @@ local function calculate_damage(attacker, defender, critical_bonus)
     local eff_bonus = 1
     local attacker_attr = 0
     local defender_attr = 0
-    
+
     if attacker.weapon.eff ~= nil and defender.trait ~= nil and
        attacker.weapon.eff == defender.trait then
         eff_bonus = 2
@@ -69,7 +67,7 @@ local function calculate_damage(attacker, defender, critical_bonus)
     local power = attacker_attr + eff_bonus * (attacker.weapon.mt +
                   triangle_bonus[attacker.weapon.kind][defender.weapon.kind])
     local damage = critical_bonus * (power - defender_attr)
-    
+
     return damage
 end
 
@@ -113,7 +111,7 @@ function SIMULATOR.run(scenario_input)
         init_fight(fight_nb, attacker, defender)
     end
 
-    scenario_output = set_output(scenario_input, units)
+    local scenario_output = set_output(scenario_input, units)
     return scenario_output.units
 end
 

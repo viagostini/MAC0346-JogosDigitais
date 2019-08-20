@@ -1,6 +1,5 @@
 local DataLoader = {}
 
-local Weapon = require "weapon"
 local Unit = require "unit"
 
 function DataLoader.load_file(filename)
@@ -12,7 +11,7 @@ function DataLoader.load_file(filename)
 end
 
 function DataLoader.load_units(input)
-    units = {}
+    local units = {}
 
     for k, v in pairs(input.units) do
         units[k] = Unit(k, v, input.weapons[v.weapon])
