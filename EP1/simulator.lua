@@ -12,6 +12,16 @@ local function get_fighters(fight, units)
     return attacker, defender
 end
 
+local function set_output(input, units)
+    local output = input
+
+    for k, v in pairs(output.units) do
+        output.units[k].HP = units[k].HP
+    end
+
+    return output
+end
+
 local function do_hit(attacker, defender, triangle_bonus)
     local acc = attacker.weapon.hit + 2 * attacker.skl + attacker.lck +
         10 * triangle_bonus[attacker.weapon.kind][defender.weapon.kind]
@@ -44,8 +54,6 @@ local function attack(attacker, defender, triangle_bonus)
 end
 
 local function init_fight(attacker, defender, triangle_bonus)
-    set_atkspd(attacker)
-    set_atkspd(defender)
     attack(attacker, defender, triangle_bonus)
     attack(defender, attacker, triangle_bonus)
 
@@ -65,7 +73,8 @@ function SIMULATOR.run(scenario_input)
         init_fight(attacker, defender, triangle_bonus)
     end
 
-    return scenario_input.units
+    scenario_output = set_output(scenario_input, units)
+    return scenario_output.units
 end
 
 return SIMULATOR
