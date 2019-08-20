@@ -1,35 +1,15 @@
 local SIMULATOR = {}
 
-local function get_fighter_data(name, input)
-    local fighter = {}
+local DataLoader = require "data_loader"
+local Weapon = require "weapon"
+local Unit = require "unit"
 
-    for k, v in pairs(input.units[name]) do
-        fighter[k] = v
-    end
+local triangle_bonus = DataLoader.load_file("triangle_bonus.lua")
 
-    fighter.name = name
-    local weapon_name = fighter.weapon
-    fighter.weapon = {name = weapon_name}
-
-    for k, v in pairs(input.weapons[weapon_name]) do
-        fighter.weapon[k] = v
-    end
-
-    return fighter
-end
-
-local function get_fighters(fight, input)
-    local fighters = {}
-
-    for i, n in ipairs(fight) do
-        fighters[i] = get_fighter_data(n, input)
-    end
-
-    return fighters[1], fighters[2]
-end
-
-local function set_atkspd(fighter)
-    fighter.atkspd = fighter.spd - math.max(0, fighter.weapon.wt - fighter.str)
+local function get_fighters(fight, units)
+    local attacker = units[fight[1]]
+    local defender = units[fight[2]]
+    return attacker, defender
 end
 
 local function do_hit(attacker, defender, triangle_bonus)
@@ -60,7 +40,6 @@ local function attack(attacker, defender, triangle_bonus)
     if do_hit(attacker, defender, triangle_bonus) then
         local critical_bonus = calculate_critical_bonus(attacker, defender)
         local damage = calculate_damage(attacker, defender, critical_bonus)
-        defender.hp = defender.hp - damage
     end
 end
 
@@ -74,15 +53,15 @@ local function init_fight(attacker, defender, triangle_bonus)
         attack(attacker, defender, triangle_bonus)
     elseif defender.atkspd - attacker.atkspd >= 4 then
         attack(defender, attacker, triangle_bonus)
+    end
 end
 
 function SIMULATOR.run(scenario_input)
     math.randomseed(scenario_input.seed)
-
-    local triangle_bonus = require("triangle_bonus")
+    local units = DataLoader.load_units(scenario_input)
 
     for fight_nb, fight in ipairs(scenario_input.fights) do
-        local attacker, defender = get_fighters(fight, scenario_input)
+        local attacker, defender = get_fighters(fight, units)
         init_fight(attacker, defender, triangle_bonus)
     end
 
