@@ -66,7 +66,7 @@ local function calculate_damage(attacker, defender, critical_bonus)
 
     local power = attacker_attr + eff_bonus * (attacker.weapon.mt +
                   triangle_bonus[attacker.weapon.kind][defender.weapon.kind])
-    local damage = critical_bonus * (power - defender_attr)
+    local damage = math.max(0, critical_bonus * (power - defender_attr))
 
     return damage
 end
