@@ -28,8 +28,6 @@ local function do_hit(attacker, defender)
     local r1 = math.random(100)
     local r2 = math.random(100)
     local rand = (r1 + r2) / 2
-    print("\t\tr1=" .. r1 .. " r2=" .. r2 .. " rand=".. rand .. " hit_chance="
-          .. hit_chance)
 
     return rand <= hit_chance
 end
@@ -39,7 +37,6 @@ local function calculate_critical_bonus(attacker, defender)
     local dodge = defender.lck
     local critical_chance = math.max(0, math.min(100, critical_rate - dodge))
     local rand = math.random(100)
-    print("\t\trand=" .. rand .. " critical_chance=" .. critical_chance)
 
     if rand <= critical_chance then return 3
     else return 1
@@ -72,8 +69,6 @@ local function calculate_damage(attacker, defender, critical_bonus)
 end
 
 local function attack(attacker, defender)
-    print("\t" .. attacker.name .. " attacking " .. defender.name)
-
     if attacker.hp == 0 then
         return
     end
@@ -81,17 +76,11 @@ local function attack(attacker, defender)
     if do_hit(attacker, defender) then
         local critical_bonus = calculate_critical_bonus(attacker, defender)
         local damage = calculate_damage(attacker, defender, critical_bonus)
-        print("\t\tDamage dealt: " .. damage)
         defender.hp = math.max(0, defender.hp - damage)
-    else
-        print("\t\tAttack missed")
     end
 end
 
-local function init_fight(fight_nb, attacker, defender)
-    print("Luta " .. fight_nb .. ": " .. attacker.name .. " vs " ..
-          defender.name)
-
+local function init_fight(attacker, defender)
     attack(attacker, defender)
     attack(defender, attacker)
 
@@ -106,9 +95,9 @@ function SIMULATOR.run(scenario_input)
     math.randomseed(scenario_input.seed)
     local units = DataLoader.load_units(scenario_input)
 
-    for fight_nb, fight in ipairs(scenario_input.fights) do
+    for _, fight in ipairs(scenario_input.fights) do
         local attacker, defender = get_fighters(fight, units)
-        init_fight(fight_nb, attacker, defender)
+        init_fight(attacker, defender)
     end
 
     local scenario_output = set_output(scenario_input, units)
