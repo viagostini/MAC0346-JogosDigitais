@@ -1,0 +1,37 @@
+Nome: Gustavo Mendes Maciel
+NUSP: 9298062
+
+Nome: Vinicius Perche de Toledo Agostini
+NUSP:
+
+------------------------------------------
+
+1. Módulos
+
+    simulator.lua: módulo principal do programa; faz a simulação das batalhas
+
+    unit.lua: classe que representa as unidades
+
+    weapon.lua: classe que representa as armas
+
+    data_loader.lua: módulo que carrega dados para o programa
+
+
+2. Tarefas
+
+    +--------+----------------------------------------------+--------+
+    | Código | Tarefa                                       | Status |
+    +--------+----------------------------------------------+--------+
+    |  T01   | Atender o formato de entrega                 |   OK   |
+    |  T02   | Executar sem erros                           |   OK   |
+    |  T03   | Relatório completo e adequado                |   OK   |
+    |  T04   | Combate básico                               |   OK   |
+    |  T05   | Acertos críticos                             |   OK   |
+    |  T06   | Triângulo de vantagem                        |   OK   |
+    |  T07   | Armas eficazes                               |   OK   |
+    |  T08   | Mecânicas adicionais                         |        |
+    |  T09   | Passar no luacheck                           |   OK   |
+    |  T10   | Organizar em módulos                         |        |
+    |  T11   | Organizar em funções                         |        |
+    |  T12   | Nomes claros de variáveis, funções e métodos |   OK   |
+    +--------+----------------------------------------------+--------+

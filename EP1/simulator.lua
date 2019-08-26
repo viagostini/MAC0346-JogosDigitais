@@ -28,7 +28,6 @@ local function do_hit(attacker, defender)
     local r1 = math.random(100)
     local r2 = math.random(100)
     local rand = (r1 + r2) / 2
-
     return rand <= hit_chance
 end
 
@@ -63,13 +62,11 @@ local function calculate_damage(attacker, defender, critical_bonus)
 
     local power = attacker_attr + eff_bonus * (attacker.weapon.mt +
                   triangle_bonus[attacker.weapon.kind][defender.weapon.kind])
-    local damage = math.max(0, critical_bonus * (power - defender_attr))
-
-    return damage
+    return math.max(0, critical_bonus * (power - defender_attr))
 end
 
 local function attack(attacker, defender)
-    if attacker.hp == 0 then
+    if attacker.hp == 0 or defender.hp == 0 then
         return
     end
 
