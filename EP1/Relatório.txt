@@ -6,7 +6,7 @@ NUSP: 4367487
 
 ------------------------------------------
 
-1. Módulos
+1. Arquivos
 
     simulator.lua: módulo principal do programa; faz a simulação das batalhas
 
@@ -15,6 +15,9 @@ NUSP: 4367487
     weapon.lua: classe que representa as armas
 
     data_loader.lua: módulo que carrega dados para o programa
+
+    triangle_bonus.lua: arquivo de dados contendo o triângulo de bonus em um
+                        formato de tabelas
 
 
 2. Tarefas
