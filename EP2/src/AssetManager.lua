@@ -6,8 +6,12 @@ local tileset
 local layers
 
 local function setup_tileset()
-    tileset.displaywidth = math.floor(love.graphics.getWidth() / map.width)
-    tileset.displayheight = math.floor(love.graphics.getHeight() / map.height)
+    tileset.displaywidth = math.floor(
+        love.graphics.getWidth() / tileset.tilewidth
+    )
+    tileset.displayheight = math.floor(
+        love.graphics.getHeight() / tileset.tileheight
+    )
     tileset.imageobj = love.graphics.newImage(maps_path .. tileset.image)
     tileset.quads = setmetatable({}, {__index = function(t, k)
         t[k] = love.graphics.newQuad(
