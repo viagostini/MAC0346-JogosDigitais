@@ -3,18 +3,18 @@ TileManager.__index = TileManager
 
 local instantiated = false
 
+local function _init(cls)
+    local self = setmetatable({}, cls)
+    return self
+end
+
 setmetatable(TileManager, {
     __call = function(cls, ...)
         assert(not instantiated,
                "Error: attempt to create another TileManager instance!")
         instantiated = true
-        local self = setmetatable({}, cls)
-        self:_init(...)
-        return self
+        return _init(cls)
     end,
 })
-
-function TileManager:_init()
-end
 
 return TileManager
