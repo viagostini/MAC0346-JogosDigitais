@@ -6,6 +6,7 @@ function love.load(arg)
 end
 
 function love.update(dt)
+    AssetManager.update()
 end
 
 function love.draw()
