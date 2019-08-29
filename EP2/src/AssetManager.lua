@@ -12,11 +12,13 @@ local function update_tileset_batch()
         for x = 1, tileset.displaywidth do
             for y = 1, tileset.displayheight do
                 local data_index = map.width * (y - 1) + x
-                tileset.batch:add(
-                    tileset.quads[v.data[data_index]],
-                    math.floor((x - y) * tileset.tilewidth / 2),
-                    math.floor((x + y) * tileset.tileheight / 4 + v.offsety)
-                )
+                if v.data[data_index] > 0 then
+                    tileset.batch:add(
+                        tileset.quads[v.data[data_index]],
+                        math.floor((x - y) * tileset.tilewidth / 2),
+                        math.floor((x + y) * tileset.tileheight / 4 + v.offsety)
+                    )
+                end
             end
         end
     end
