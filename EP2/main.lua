@@ -1,7 +1,6 @@
-local AssetManager = require("src/AssetManager")
+local AssetManager = require "src/AssetManager"
 
 function love.load(arg)
-    love.graphics.setColor(0, 0, 0)
     AssetManager.init(arg[1])
 end
 
