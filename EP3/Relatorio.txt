@@ -1,0 +1,60 @@
+Nome: Gustavo Mendes Maciel
+NUSP: 9298062
+
+Nome: Vinicius Perche de Toledo Agostini
+NUSP: 4367487
+
+------------------------------------------
+
+1. Módulos
+
+
+2. Tarefas
+
+    +---------------------+--------+--------+
+    | Categoria           | Limite | Código |
+    +---------------------+--------+--------+
+    | Apresentação        |   30   |   Ax   |
+    | Simulação           |   40   |   Sx   |
+    | Renderização        |   40   |   Rx   |
+    | Qualidade de código |   30   |   Qx   |
+    | Efeitos adicionais  |   20   |   Ex   |
+    +---------------------+--------+--------+
+
+    +--------+-------------------------------------------------------------+--------+
+    | Código | Tarefa                                                      | Status |
+    +--------+-------------------------------------------------------------+--------+
+    |   A1   | Atender o formato de entrega                                |        |
+    |   A2   | Executar sem erros                                          |        |
+    |   A3   | Relatório completo e adequado                               |        |
+    |   A4   | Arquivo conf.lua apropriado                                 |        |
+    |   A5   | Cenas e entidades adicionais de teste                       |        |
+    +--------+-------------------------------------------------------------+--------+
+    |   S1   | Limitar o espaço de simulação                               |        |
+    |   S2   | Propriedade de posição                                      |        |
+    |   S3   | Posicionar aleatoriamente entidades sem posição explícita   |        |
+    |   S4   | Propriedade de movimento                                    |        |
+    |   S5   | Propriedade de corpo                                        |        |
+    |   S6   | Propriedade de controle                                     |        |
+    |   S7   | Propriedades de campo e carga                               |        |
+    +--------+-------------------------------------------------------------+--------+
+    |   R1   | Centralizar a tela na origem                                |        |
+    |   R2   | Renderizar os limites do espaço de simulação                |        |
+    |   R3   | Renderizar a propriedade de posição                         |        |
+    |   R4   | Renderizar a propriedade de corpo                           |        |
+    |   R5   | Renderizar a propriedade de controle                        |        |
+    |   R6   | Centralizar a tela na entidade controlada, se houver        |        |
+    |   R7   | Renderizar a propriedade de campo                           |        |
+    |   R8   | Renderizar a propriedade de carga                           |        |
+    +--------+-------------------------------------------------------------+--------+
+    |   Q1   | Passar no luacheck                                          |        |
+    |   Q2   | Organizar em módulos                                        |        |
+    |   Q3   | Organizar em funções                                        |        |
+    |   Q4   | Nomes claros de variáveis, funções e módulos                |        |
+    +--------+-------------------------------------------------------------+--------+
+    |   E1   | Usar uma arquitetura Entity-Component-System                |        |
+    |   E2   | Opção para dar zoom in e out na câmera                      |        |
+    |   E3   | Não posicionar aleatoriamente entidades colidindo (difícil) |        |
+    |   E4   | Opção para controlar a velocidade de simulação              |        |
+    |   E5   | Efeitos de juiciness                                        |        |
+    +--------+-------------------------------------------------------------+--------+
