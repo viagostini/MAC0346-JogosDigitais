@@ -1,9 +1,12 @@
 local AssetManager = {}
 
+local Sprite = require "src/Sprite"
+
 local maps_path = "/maps/"
 local map
 local tileset
 local tilelayers = {}
+local sprites = {}
 
 local function update_tileset_batch()
     tileset.batch:clear()
@@ -36,8 +39,7 @@ local function setup_tileset()
             math.floor((tonumber(k) - 1) / tileset.columns) * tileset.tileheight,
             tileset.tilewidth,
             tileset.tileheight,
-            tileset.imageobj:getWidth(),
-            tileset.imageobj:getHeight()
+            tileset.imageobj:getDimensions()
         )
         return t[k]
     end})
@@ -55,19 +57,41 @@ local function setup_tileset()
     update_tileset_batch()
 end
 
+local function setup_sprites()
+    for _, v in ipairs(map.layers) do
+        if v.type == "objectgroup" then
+            for _, v2 in ipairs(v.objects) do
+                if v2.type == "sprite" then
+                    local sprite = Sprite(v2.id, v2.name, v2.x, v2.y, v2.width,
+                                          v2.height, v2.properties)
+                    table.insert(sprites, sprite)
+                end
+            end
+        end
+    end
+end
+
 function AssetManager.init(map_name)
     local chunk = love.filesystem.load(maps_path .. map_name .. ".lua")
     map = chunk()
     tileset = map.tilesets[1]
     setup_tileset()
+    setup_sprites()
     love.graphics.setBackgroundColor(unpack(map.backgroundcolor))
 end
 
-function AssetManager.update()
+function AssetManager.update(dt)
+    for _, v in ipairs(sprites) do
+        v:update(dt)
+    end
 end
 
 function AssetManager.draw()
-    love.graphics.draw(tileset.batch, 1, 1)
+    love.graphics.scale(0.5, 0.5)
+    love.graphics.draw(tileset.batch, 800, 100)
+    for _, v in ipairs(sprites) do
+        v:draw()
+    end
     love.graphics.setColor(0, 0, 0)
     love.graphics.print("FPS: " .. love.timer.getFPS(), 0, 0)
     love.graphics.setColor(255, 255, 255)

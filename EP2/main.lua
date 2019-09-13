@@ -5,7 +5,7 @@ function love.load(arg)
 end
 
 function love.update(dt)
-    AssetManager.update()
+    AssetManager.update(dt)
 end
 
 function love.draw()

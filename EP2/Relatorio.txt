@@ -1,0 +1,40 @@
+Nome: Gustavo Mendes Maciel
+NUSP: 9298062
+
+Nome: Vinicius Perche de Toledo Agostini
+NUSP: 4367487
+
+------------------------------------------
+
+1. Arquivos
+
+    main.lua: módulo principal do programa
+
+    src/AssetManager.lua: módulo que cuida do gerenciamento e desenho dos
+                          assets
+
+    src/Class.lua: módulo para criação de classes
+
+    src/Sprite.lua: classe que representa os sprites
+
+
+2. Tarefas
+
+    +--------+----------------------------------------------+--------+
+    | Código | Tarefa                                       | Status |
+    +--------+----------------------------------------------+--------+
+    |   A1   | Atender o formato de entrega                 |   OK   |
+    |   A2   | Executar sem erros                           |   OK   |
+    |   A3   | Relatório completo e adequado                |   OK   |
+    |   A4   | Arquivo conf.lua apropriado                  |   OK   |
+    |   A5   | Mapas adicionais de teste                    |        |
+    |   R1   | Renderizar os tiles corretamente             |   OK   |
+    |   R2   | Renderizar os sprites corretamente           |        |
+    |   R3   | Animar a câmera corretamente                 |        |
+    |   R4   | Efeitos adicionais (1)                       |        |
+    |   Q1   | Passar no luacheck                           |   OK   |
+    |   Q2   | Organizar em módulos                         |        |
+    |   Q3   | Organizar em funções                         |        |
+    |   Q4   | Nomes claros de variáveis, funções e métodos |   OK   |
+    |   Q5   | Tratar problemas na entrada                  |        |
+    +--------+----------------------------------------------+--------+
