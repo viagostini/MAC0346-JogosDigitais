@@ -1,8 +1,8 @@
 
 return {
-  position = {},
-  body = {
-    size = 128
-  },
+    position = {},
+    body = {
+        size = 128
+    },
 }
 

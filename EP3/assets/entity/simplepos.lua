@@ -1,9 +1,9 @@
 
 return {
-  position = {},
-  movement = {},
-  charge = {
-    strength = 1
-  }
+    position = {},
+    movement = {},
+    charge = {
+        strength = 1
+    }
 }
 

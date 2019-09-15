@@ -1,11 +1,11 @@
 
 return {
-  position = {},
-  body = {
-    size = 48
-  },
-  field = {
-    strength = -32
-  }
+    position = {},
+    body = {
+        size = 48
+    },
+    field = {
+        strength = -32
+    }
 }
 
