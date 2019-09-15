@@ -24,7 +24,7 @@ local function init_entities(self, scene_data)
         local chunk = love.filesystem.load(entities_path .. v.entity .. ".lua")
         local entity_data = chunk()
 
-        for i = 1, tonumber(v.n) do
+        for _ = 1, tonumber(v.n) do
             create_entity(self, id, v.entity, entity_data)
             id = id + 1
         end
@@ -41,8 +41,7 @@ function Scene:_init(name, center, size)
     instantiated = true
 
     self.center = center
-    self.origin = Vec(love.graphics.getDimensions()) / 2
-    self.size = size 
+    self.size = size
     local default_values = love.filesystem.load(entities_path .. "default.lua")
     init_properties(self, default_values())
     local scene_data = love.filesystem.load(scenes_path .. name .. ".lua")
@@ -54,9 +53,10 @@ function Scene:update(dt)
 end
 
 function Scene:draw()
+    self.origin = Vec(love.graphics.getDimensions()) / 2
     love.graphics.translate(self.origin.x, self.origin.y)
     love.graphics.setColor(255, 255, 255)
-    love.graphics.scale(0.25, 0.25)
+    love.graphics.scale(0.4, 0.4)
     love.graphics.circle("line", self.center.x, self.center.y, self.size)
     self.position:draw()
 end
