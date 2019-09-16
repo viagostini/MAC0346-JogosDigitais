@@ -31,7 +31,7 @@ NUSP: 4367487
     |   A5   | Cenas e entidades adicionais de teste                       |        |
     +--------+-------------------------------------------------------------+--------+
     |   S1   | Limitar o espaço de simulação                               |        |
-    |   S2   | Propriedade de posição                                      |   OK   |
+    |   S2   | Propriedade de posição                                      |        |
     |   S3   | Posicionar aleatoriamente entidades sem posição explícita   |   OK   |
     |   S4   | Propriedade de movimento                                    |        |
     |   S5   | Propriedade de corpo                                        |        |
@@ -41,7 +41,7 @@ NUSP: 4367487
     |   R1   | Centralizar a tela na origem                                |   OK   |
     |   R2   | Renderizar os limites do espaço de simulação                |   OK   |
     |   R3   | Renderizar a propriedade de posição                         |   OK   |
-    |   R4   | Renderizar a propriedade de corpo                           |        |
+    |   R4   | Renderizar a propriedade de corpo                           |   OK   |
     |   R5   | Renderizar a propriedade de controle                        |        |
     |   R6   | Centralizar a tela na entidade controlada, se houver        |        |
     |   R7   | Renderizar a propriedade de campo                           |        |
