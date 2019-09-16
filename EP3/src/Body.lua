@@ -14,7 +14,7 @@ function Body:_init(default_value)
 end
 
 function Body:add_entity(entity_id, body_data)
-    local body 
+    local body
 
     if body_data == nil then
         return

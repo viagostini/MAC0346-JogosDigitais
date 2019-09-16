@@ -23,7 +23,7 @@ function Position:_init(default_value)
 end
 
 function Position:add_entity(entity_id, position_data, scene_size, body)
-    local position 
+    local position
 
     if position_data == nil then
         return
@@ -35,9 +35,6 @@ function Position:add_entity(entity_id, position_data, scene_size, body)
     end
 
     Property.add_entity(self, entity_id, position)
-end
-
-function Position:update(dt)
 end
 
 function Position:draw(body)
