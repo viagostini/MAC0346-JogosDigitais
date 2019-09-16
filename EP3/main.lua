@@ -9,8 +9,7 @@ function love.load(arg)
     scene = Scene(scene_name, Vec(0, 0), 1000)
 end
 
-function love.update(dt)
-    scene:update(dt)
+function love.update()
 end
 
 function love.draw()

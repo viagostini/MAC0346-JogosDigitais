@@ -53,10 +53,6 @@ function Scene:_init(name, center, size)
     init_entities(self, scene_data())
 end
 
-function Scene:update(dt)
-    self.position:update(dt)
-end
-
 function Scene:draw()
     self.origin = Vec(love.graphics.getDimensions()) / 2
     love.graphics.translate(self.origin.x, self.origin.y)
