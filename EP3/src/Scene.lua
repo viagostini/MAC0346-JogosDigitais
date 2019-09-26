@@ -3,6 +3,7 @@ local Body = require "src/Body"
 local Class = require "src/common/class"
 local Entity = require "src/Entity"
 local Position = require "src/Position"
+local Movement = require "src/Movement"
 local Vec = require "src/common/vec"
 
 local Scene = Class()
@@ -17,6 +18,7 @@ local function create_entity(self, id, type, entity_data)
     self.entities[id] = entity
     self.body:add_entity(id, entity_data.body)
     self.position:add_entity(id, entity_data.position, self.size, self.body)
+    self.movement:add_entity(id, entity_data.movement)
 end
 
 local function init_entities(self, scene_data)
@@ -37,6 +39,7 @@ end
 local function init_properties(self, default_data)
     self.position = Position(default_data.position)
     self.body = Body(default_data.body)
+    self.movement = Movement(default_data.movement)
 end
 
 function Scene:_init(name, center, size)
@@ -51,6 +54,10 @@ function Scene:_init(name, center, size)
     local filepath = scenes_path .. name .. assets_extension
     local scene_data = love.filesystem.load(filepath)
     init_entities(self, scene_data())
+end
+
+function Scene:update(dt)
+    self.position:update(self.movement, dt)
 end
 
 function Scene:draw()

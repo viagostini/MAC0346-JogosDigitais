@@ -9,7 +9,11 @@ function love.load(arg)
     scene = Scene(scene_name, Vec(0, 0), 1000)
 end
 
-function love.update()
+function love.update(dt)
+    if love.keyboard.isDown('escape') then
+        love.event.quit()
+    end
+    scene:update(dt)
 end
 
 function love.draw()

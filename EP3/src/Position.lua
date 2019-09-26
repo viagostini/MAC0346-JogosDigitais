@@ -37,6 +37,15 @@ function Position:add_entity(entity_id, position_data, scene_size, body)
     Property.add_entity(self, entity_id, position)
 end
 
+function Position:update(movement, dt)
+    for id, position in pairs(self.entity_table) do
+        if movement.entity_table[id] ~= nil then
+           local motion = movement.entity_table[id].motion
+           position.point = motion * dt + position.point
+        end
+    end
+end
+
 function Position:draw(body)
     for id, position in pairs(self.entity_table) do
         if body.entity_table[id] ~= nil then
