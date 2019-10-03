@@ -1,4 +1,3 @@
-local Vec = require "src/common/vec"
 local Class = require "src/common/class"
 local Property = require "src/Property"
 
