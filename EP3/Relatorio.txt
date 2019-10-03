@@ -8,6 +8,19 @@ NUSP: 4367487
 
 1. Módulos
 
+    src/Body.lua: implementa a propriedade de corpo
+
+    src/Entity.lua: representa uma entidade; só possui um id e um tipo
+
+    src/Movement.lua: implementa a propriedade de movimento
+
+    src/Position.lua: implementa a propriedade de posição
+
+    src/Property.lua: classe abstrata que serve de base para cada classe de
+                      propriedade
+
+    src/Scene.lua: gerencia todos os assets e suas propriedades
+
 
 2. Tarefas
 
